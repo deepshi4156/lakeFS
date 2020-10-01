@@ -22,8 +22,8 @@ or using tools like [Apache DistCp](../using/distcp.md#from-s3-to-lakefs). This 
 
 ## Limitations
 Unfortunately, copying data is not always feasible for the following reasons:
-1. Some data is just too big to copy.
-2. It requires you to stop making changes to the data before starting to copy.
+1. Data in huge amount cannot be copied . 
+2. Before starting to copy data, you must stop making any modifications to the data and files.
 3. It requires you to switch to using the lakeFS endpoint in all places at once.
 
 ## Using lakeFS import tool
@@ -42,7 +42,7 @@ Files created or replaced through lakeFS will then be stored in the repositoryâ€
 It is important to note that due to the deduplication feature of lakeFS, data will stay in your original bucket even
 when accessing it through other branches. In a sense, your original bucket becomes an initial snapshot of your data.
 
-The import tool is available through the command line, or through the web interface.
+The import tool can be availed through web interface or through command line on windows.
 
 **Note:** lakeFS will never make any changes to the import source bucket.
 {: .note .pb-3 }  
@@ -64,7 +64,7 @@ Assuming your manifest.json is at `s3://example-bucket/path/to/inventory/YYYY-MM
 lakefs import lakefs://example-repo -m s3://example-bucket/path/to/inventory/YYYY-MM-DDT00-00Z/manifest.json --config config.yaml
 ```
 
-You will see the progress of your import as it is performed.
+Gradually, you will be able to see any progress made in your data.
 After the import is finished, a summary will be printed along with suggestions for commands to access your data.
 
 ```
